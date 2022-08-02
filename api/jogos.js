@@ -1,5 +1,4 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const credentials = require('../credentials/google-api.json');
 const express = require("express");
 const router = express.Router();
 var bodyParser = require('body-parser');
