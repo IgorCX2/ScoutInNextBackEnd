@@ -18,8 +18,8 @@ router.use((req, res, next) => {
 router.post('/add-jogo', async (req, res) =>{
     const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
     await doc.useServiceAccountAuth({
-        client_email: credentials.client_email,
-        private_key: credentials.private_key,
+        client_email: process.env.client_email,
+        private_key: process.env.private_key,
     });
     await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];
@@ -42,8 +42,8 @@ router.post('/add-jogo', async (req, res) =>{
 router.post('/cad-001', async (req, res) =>{
   const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
   await doc.useServiceAccountAuth({
-      client_email: credentials.client_email,
-      private_key: credentials.private_key,
+      client_email: process.env.client_email,
+      private_key: process.env.private_key,
   });
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
@@ -66,8 +66,8 @@ router.post('/cad-001', async (req, res) =>{
 router.post('/cad-000', async (req, res) =>{
   const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
   await doc.useServiceAccountAuth({
-      client_email: credentials.client_email,
-      private_key: credentials.private_key,
+      client_email: process.env.client_email,
+      private_key: process.env.private_key,
   });
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
@@ -96,8 +96,8 @@ router.post('/cad-000', async (req, res) =>{
 router.get('/listar', async (req, res) =>{
   const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
   await doc.useServiceAccountAuth({
-      client_email: credentials.client_email,
-      private_key: credentials.private_key,
+      client_email: process.env.client_email,
+      private_key: process.env.private_key,
   });
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
