@@ -16,7 +16,7 @@ router.use((req, res, next) => {
 });
 
 router.post('/add-jogo', async (req, res) =>{
-    const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
+    const doc = new GoogleSpreadsheet(process.env.banco_dados);
     await doc.useServiceAccountAuth({
         client_email: process.env.client_email,
         private_key: process.env.private_key,
@@ -40,7 +40,7 @@ router.post('/add-jogo', async (req, res) =>{
     });
 });
 router.post('/cad-001', async (req, res) =>{
-  const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
+  const doc = new GoogleSpreadsheet(process.env.banco_dados);
   await doc.useServiceAccountAuth({
       client_email: process.env.client_email,
       private_key: process.env.private_key,
@@ -64,7 +64,7 @@ router.post('/cad-001', async (req, res) =>{
   });
 });
 router.post('/cad-000', async (req, res) =>{
-  const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
+  const doc = new GoogleSpreadsheet(process.env.banco_dados);
   await doc.useServiceAccountAuth({
       client_email: process.env.client_email,
       private_key: process.env.private_key,
@@ -94,7 +94,7 @@ router.post('/cad-000', async (req, res) =>{
   });
 });
 router.get('/listar', async (req, res) =>{
-  const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
+  const doc = new GoogleSpreadsheet(process.env.banco_dados);
   await doc.useServiceAccountAuth({
       client_email: process.env.client_email,
       private_key: process.env.private_key,
