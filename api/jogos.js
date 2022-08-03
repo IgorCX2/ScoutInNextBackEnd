@@ -123,10 +123,9 @@ router.get('/all', async (req, res) =>{
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
   const rows = await sheet.getRows();
-  const jogos = rows.map(({ esporte, adversario, tempo, pontos, tcerto, terrado, mcerto, merrado, sexo }) => {
+  const jogos = rows.map(({ esporte, adversario, pontos, tcerto, terrado, mcerto, merrado, sexo }) => {
     return{
       esporte,
-      tempo,
       adversario,
       pontos,
       tcerto,
