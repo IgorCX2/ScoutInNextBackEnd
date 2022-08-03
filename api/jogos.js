@@ -114,4 +114,33 @@ router.get('/listar', async (req, res) =>{
     idjogo
   })
 });
+router.get('/all', async (req, res) =>{
+  const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
+  await doc.useServiceAccountAuth({
+      client_email: credentials.client_email,
+      private_key: credentials.private_key,
+  });
+  await doc.loadInfo();
+  const sheet = doc.sheetsByIndex[0];
+  const rows = await sheet.getRows();
+  const jogos = rows.map(({ esporte, adversario, tempo, pontos, tcerto, terrado, mcerto, merrado, sexo }) => {
+    return{
+      esporte,
+      tempo,
+      adversario,
+      pontos,
+      tcerto,
+      terrado,
+      mcerto,
+      merrado,
+      sexo
+    }
+  })
+  const idjogo = rows[0].id_jogo
+  res.send({
+    mensagem: "cadastrado",
+    jogos,
+    idjogo
+  })
+});
 module.exports = router;
