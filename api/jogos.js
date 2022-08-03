@@ -127,7 +127,7 @@ router.get('/all', async (req, res) =>{
     return{
       esporte,
       adversario,
-      tempo
+      tempo,
       pontos,
       tcerto,
       terrado,
