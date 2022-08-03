@@ -115,18 +115,19 @@ router.get('/listar', async (req, res) =>{
   })
 });
 router.get('/all', async (req, res) =>{
-  const doc = new GoogleSpreadsheet('1ibVTrkoT3JvgtzDH7R5dT68Y9anivz0Igdobcoq_YM4');
+  const doc = new GoogleSpreadsheet(process.env.banco_dados);
   await doc.useServiceAccountAuth({
-      client_email: credentials.client_email,
-      private_key: credentials.private_key,
+      client_email: process.env.client_email,
+      private_key: process.env.private_key,
   });
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
   const rows = await sheet.getRows();
-  const jogos = rows.map(({ esporte, adversario, pontos, tcerto, terrado, mcerto, merrado, sexo }) => {
+  const jogos = rows.map(({ esporte, adversario, tempo, pontos, tcerto, terrado, mcerto, merrado, sexo }) => {
     return{
       esporte,
       adversario,
+      tempo
       pontos,
       tcerto,
       terrado,
