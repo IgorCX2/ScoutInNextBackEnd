@@ -123,7 +123,7 @@ router.get('/all', async (req, res) =>{
   await doc.loadInfo();
   const sheet = doc.sheetsByIndex[0];
   const rows = await sheet.getRows();
-  const jogos = rows.map(({ esporte, adversario, tempo, pontos, tcerto, terrado, mcerto, merrado, sexo }) => {
+  const jogos = rows.map(({ esporte, adversario, tempo, pontos, tcerto, terrado, mcerto, merrado, sexo, saques}) => {
     return{
       esporte,
       adversario,
@@ -133,7 +133,8 @@ router.get('/all', async (req, res) =>{
       terrado,
       mcerto,
       merrado,
-      sexo
+      sexo,
+      saques
     }
   })
   const idjogo = rows[0].id_jogo
